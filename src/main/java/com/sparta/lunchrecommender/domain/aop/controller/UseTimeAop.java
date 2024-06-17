@@ -23,14 +23,18 @@ public class UseTimeAop {
 
     private final ApiUseTimeRepository apiUseTimeRepository;
 
-    @Pointcut("execution(* com.sparta.lunchrecommender.domain.user.*(..))")
+    @Pointcut("execution(* com.sparta.lunchrecommender.domain.user.controller.UserController.*(..))")
     private void user() {}
+    @Pointcut("execution(* com.sparta.lunchrecommender.domain.user.controller.ProfileController.*(..))")
+    private void profile() {}
+    @Pointcut("execution(* com.sparta.lunchrecommender.domain.auth.controller.AuthController.*(..))")
+    private void auth() {}
 
 
-    @Around("user()")
-    public Object execute(ProceedingJoinPoint joinPoint) throws Throwable {
-        // 측정 시작 시간
-        long startTime = System.currentTimeMillis();
+        @Around("user() || profile() || auth()")
+        public Object execute(ProceedingJoinPoint joinPoint) throws Throwable {
+            // 측정 시작 시간
+            long startTime = System.currentTimeMillis();
 
         try {
             // 핵심기능 수행
