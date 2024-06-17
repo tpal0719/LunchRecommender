@@ -37,3 +37,9 @@ server:
     key-store-password: ${KEY_STORE_PASSWORD}
     key-store-type: PKCS12
     key-alias: bootsecurity
+
+
+logging:
+  level:
+    root: INFO
+    com.sparta.lunchrecommender.global.aop: INFO
